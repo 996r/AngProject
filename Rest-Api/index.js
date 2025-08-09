@@ -7,12 +7,19 @@ const printerRoutes = require('./router/printerRoutes');
 const branchRoutes = require('./router/branchRoutes');
 const errorHandler = require('./utils/error_handler');
 const config = require('./config/config');
+const cors = require('cors');
+
+// Load environment variables from .env file new
+// dotenv.config();
 
 // Connect to the database
 connectDB();
 
 const app = express();
 const port = config.port;
+
+// Middleware to enable CORS for all origins
+app.use(cors()); // <-- Step 3: Use the cors middleware
 
 // Middleware
 app.use(express.json());

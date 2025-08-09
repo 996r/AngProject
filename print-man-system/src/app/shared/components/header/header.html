@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="/home">
                             <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                             <h1 class="tm-site-title mb-0">PrintManSystem</h1>
                         </a>
@@ -14,53 +14,39 @@
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Reports
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Daily Report</a>
-                                        <a class="dropdown-item" href="#">Weekly Report</a>
-                                        <a class="dropdown-item" href="#">Yearly Report</a>
-                                    </div>
-                                </li>
+                                
                                 <li class="nav-item">
-                                    <a class="nav-link" href="products.html">Products</a>
+                                    <a class="nav-link" href="/printer-board">Printers</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="accounts.html">Accounts</a>
+                                    <a class="nav-link" href="/branch-board">Branches</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Settings
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Profile</a>
-                                        <a class="dropdown-item" href="#">Billing</a>
-                                        <a class="dropdown-item" href="#">Customize</a>
-                                    </div>
-                                </li>
+                                
                             </ul>
                             <ul class="navbar-nav">
+                                @if (isLoggedIn) {
+                                     
+                                 <li class="nav-item">
+                                    <a class="nav-link d-flex" href="#" (click)="logout()">
+                                        <i class="far fa-user mr-2 tm-logout-icon"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                </li> }
+                                @else{
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="login.html">
+                                    <a class="nav-link d-flex" href="/login">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Login</span>
                                     </a>
                                 </li>
                                  <li class="nav-item">
-                                    <a class="nav-link d-flex" href="login.html">
+                                    <a class="nav-link d-flex" href="/register">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Register</span>
                                     </a>
-                                </li>
-                                 <!-- <li class="nav-item">
-                                    <a class="nav-link d-flex" href="login.html">
-                                        <i class="far fa-user mr-2 tm-logout-icon"></i>
-                                        <span>Logout</span>
-                                    </a>
-                                </li> -->
+                                 </li>
+                                }
                             </ul>
                         </div>
                     </nav>

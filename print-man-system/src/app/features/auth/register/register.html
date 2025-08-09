@@ -1,1 +1,121 @@
-<p>register works!</p>
+<body class="bg03">
+  <div class="container">
+    <div class="row tm-mt-big">
+      <div class="col-12 mx-auto tm-login-col">
+        <div class="bg-white tm-block">
+          <div class="row">
+            <div class="col-12 text-center">
+              <i
+                class="fas fa-3x fa-tachometer-alt tm-site-icon text-center"
+              ></i>
+              <h2 class="tm-block-title mt-3">Register</h2>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-12">
+              <form  #f="ngForm" (ngSubmit)="onRegister(f.value)" action="index.html" method="post" class="tm-login-form">
+                <div class="input-group">
+                  <label
+                    for="username"
+                    class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+                    >Username</label
+                  >
+                  <input
+                    name="username"
+                    [(ngModel)]="username"
+                    type="text"
+                    class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                    id="username"
+                    value=""
+                    required=""
+                  />
+                </div>
+                
+
+                <div class="input-group mt-3">
+                  <label
+                    for="email"
+                    class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+                    >Email</label
+                  >
+                  <input
+                    name="email"
+                    ng [(ngModel)]="email"
+                    type="text"
+                    class="form-control validate"
+                    id="email"
+                    value=""
+                    required=""
+                  />
+                </div>
+
+                <div class="input-group mt-3">
+                  <label
+                    for="branch_code"
+                    class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+                    >Branch Code</label
+                  >
+                  <input
+                    name="branch_code"
+                    [(ngModel)]="branch_code"
+                    type="text"
+                    class="form-control validate"
+                    id="branch_code"
+                    value=""
+                    required=""
+                  />
+                </div>
+
+                <div class="input-group mt-3">
+                  <label
+                    for="password"
+                    class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+                    >Password</label
+                  >
+                  <input
+                    name="password"
+                    [(ngModel)]="password"
+                    type="password"
+                    class="form-control validate"
+                    id="password"
+                    value="1234"
+                    required=""
+                  />
+                </div>
+
+                <div class="input-group mt-3">
+                  <label
+                    for="rePassword"
+                    class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+                    >Re-Password</label
+                  >
+                  <input
+                    name="rePassword"
+                    [(ngModel)]="rePassword"
+                    type="password"
+                    class="form-control validate"
+                    id="rePassword"
+                    value="1234"
+                    required=""
+                  />
+                </div>
+                <div class="input-group mt-3">
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary d-inline-block mx-auto"
+                  >
+                    Register
+                  </button>
+                </div>
+                <div class="input-group mt-3">
+                  <p><em>Please enter the required fields.</em></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
