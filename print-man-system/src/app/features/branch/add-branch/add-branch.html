@@ -1,0 +1,166 @@
+<div class="bg-white tm-block">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="tm-block-title d-inline-block">Add Branch</h2>
+    </div>
+  </div>
+  <div class="row mt-4 tm-edit-product-row">
+    <div class="col-xl-7 col-lg-7 col-md-12">
+      <form
+        [formGroup]="branchForm"
+        (ngSubmit)="onSubmit()"
+        action=""
+        class="tm-edit-product-form"
+      >
+        <div class="input-group mb-3">
+          <label
+            for="branch_name"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Branch Name
+          </label>
+          <input
+            id="branch_name"
+            name="branch_name"
+            type="text"
+            formControlName="branch_name"
+            class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+          />
+          <div
+            *ngIf="
+              branchForm.get('branch_name')?.invalid &&
+              (branchForm.get('branch_name')?.dirty ||
+                branchForm.get('branch_name')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="branchForm.get('model')?.errors?.['required']">
+              Branch name is required.
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <label
+            for="city"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >City
+          </label>
+          <input
+            id="city"
+            name="city"
+            type="text"
+            formControlName="city"
+            class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7 hasDatepicker"
+            data-large-mode="true"
+          />
+          <div
+            *ngIf="
+              branchForm.get('city')?.invalid &&
+              (branchForm.get('city')?.dirty ||
+                branchForm.get('city')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="branchForm.get('city')?.errors?.['required']">
+              City is required.
+            </p>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <label
+            for="address"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Address
+            
+          </label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            formControlName="address"
+            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+          />
+          <div
+            *ngIf="
+              branchForm.get('address')?.invalid &&
+              (branchForm.get('address')?.dirty ||
+                branchForm.get('address')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="branchForm.get('address')?.errors?.['required']">
+              Address is required.
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <label
+            for="branch_code"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Branch Code
+            
+          </label>
+          <input
+            id="branch_code"
+            name="branch_code"
+            type="text"
+            formControlName="branch_code"
+            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+          />
+          <div
+            *ngIf="
+              branchForm.get('branch_code')?.invalid &&
+              (branchForm.get('branch_code')?.dirty ||
+                branchForm.get('branch_code')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="branchForm.get('macAddress')?.errors?.['required']">
+              Branch Code is required.
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <label
+            for="numberOfPeoples"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Number Of Peoples
+            
+          </label>
+          <input
+            id="numberOfPeoples"
+            name="numberOfPeoples"
+            type="text"
+            formControlName="numberOfPeoples"
+            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+          />
+          <div
+            *ngIf="
+              branchForm.get('numberOfPeoples')?.invalid &&
+              (branchForm.get('numberOfPeoples')?.dirty ||
+                branchForm.get('numberOfPeoples')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="branchForm.get('numberOfPeoples')?.errors?.['required']">
+              Number Of Peoples Code is required.
+            </p>
+          </div>
+        </div>
+
+          <!-- Error Message Display from the component's logic -->
+      <div *ngIf="errorMessage" class="text-sm font-medium text-center text-red-600">
+        {{ errorMessage }}
+      </div>
+
+        <div class="input-group mb-3">
+          <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+            <button type="submit" [disabled]="branchForm.invalid" class="btn btn-primary">Add Branch</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

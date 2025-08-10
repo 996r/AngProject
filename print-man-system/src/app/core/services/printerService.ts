@@ -1,16 +1,14 @@
-import { Injectable } from "@angular/core";
-import { AuthService } from "./auth.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Branch } from "../../models";
+import { Injectable } from "@angular/core";
 import { Observable,throwError } from "rxjs";
-
+import { Printer } from "../../models";
+import { AuthService } from "./auth.service";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-
-export class BranchService {
-    private apiUrl = 'http://localhost:3000/api/branches';
+export class PrinterService {
+  private apiUrl = 'http://localhost:3000/api/printers';
   
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -26,10 +24,10 @@ export class BranchService {
     });
   }
 
-    getAllBranches(): Observable<Branch[]> {
+    getAllPrinters(): Observable<Printer[]> {
     try {
       const headers = this.getAuthHeaders();
-      return this.http.get<Branch[]>(`${this.apiUrl}`, { headers: headers });
+      return this.http.get<Printer[]>(`${this.apiUrl}`, { headers: headers });
     } catch (error: any) {
     
       return throwError(() => new Error(error.message));
@@ -37,13 +35,15 @@ export class BranchService {
   }
 
  
-  createBranch(branch: Branch): Observable<Branch> {
+  createPrinter(printer: Printer): Observable<Printer> {
     try {
       const headers = this.getAuthHeaders();
-      return this.http.post<Branch>(`${this.apiUrl}`, branch, {headers: headers });
+      return this.http.post<Printer>(`${this.apiUrl}`, printer, {headers: headers });
     } catch (error: any) {
     
       return throwError(() => new Error(error.message));
     }
   }
 }
+
+  

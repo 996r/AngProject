@@ -1,3 +1,3 @@
 export * from './branchService';
-export * from './printersService';
+export * from './printerService';
 export * from './auth.service';

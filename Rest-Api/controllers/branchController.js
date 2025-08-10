@@ -4,7 +4,8 @@ const Branch = require('../models/Branch');
 
 const getBranches = async (req, res) => {
   try {
-    const branches = await Branch.find().populate('printer_serial_numbers');
+    // const branches = await Branch.find().populate('printer_serial_numbers');
+    const branches = await Branch.find();
     res.json(branches);
   } catch (err) {
     console.error(err.message);

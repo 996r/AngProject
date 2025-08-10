@@ -1,0 +1,222 @@
+<div class="bg-white tm-block">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="tm-block-title d-inline-block">Add Product</h2>
+    </div>
+  </div>
+  <div class="row mt-4 tm-edit-product-row">
+    <div class="col-xl-7 col-lg-7 col-md-12">
+      <form
+        [formGroup]="printerForm"
+        (ngSubmit)="onSubmit()"
+        action=""
+        class="tm-edit-product-form"
+      >
+        <div class="input-group mb-3">
+          <label
+            for="model"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Printer Model
+          </label>
+          <input
+            id="model"
+            name="model"
+            type="text"
+            formControlName="model"
+            class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+          />
+          <div
+            *ngIf="
+              printerForm.get('model')?.invalid &&
+              (printerForm.get('model')?.dirty ||
+                printerForm.get('model')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="printerForm.get('model')?.errors?.['required']">
+              Model is required.
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <label
+            for="serialNumber"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Serial Number
+          </label>
+          <input
+            id="serialNumber"
+            name="serialNumber"
+            type="text"
+            formControlName="serialNumber"
+            class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7 hasDatepicker"
+            data-large-mode="true"
+          />
+          <div
+            *ngIf="
+              printerForm.get('serialNumber')?.invalid &&
+              (printerForm.get('serialNumber')?.dirty ||
+                printerForm.get('serialNumber')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="printerForm.get('serialNumber')?.errors?.['required']">
+              Serial Number is required.
+            </p>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <label
+            for="address"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Address
+            
+          </label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            formControlName="address"
+            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+          />
+          <div
+            *ngIf="
+              printerForm.get('address')?.invalid &&
+              (printerForm.get('address')?.dirty ||
+                printerForm.get('address')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="printerForm.get('address')?.errors?.['required']">
+              Address is required.
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <label
+            for="ipAddress"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >IP Address
+            
+          </label>
+          <input
+            id="ipAddress"
+            name="ipAddress"
+            type="text"
+            formControlName="ipAddress"
+            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+          />
+          <div
+            *ngIf="
+              printerForm.get('ipAddress')?.invalid &&
+              (printerForm.get('ipAddress')?.dirty ||
+                printerForm.get('ipAddress')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="printerForm.get('ipAddress')?.errors?.['required']">
+              IP Address is required.
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <label
+            for="macAddress"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >MAC Address
+            
+          </label>
+          <input
+            id="macAddress"
+            name="macAddress"
+            type="text"
+            formControlName="macAddress"
+            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+          />
+          <div
+            *ngIf="
+              printerForm.get('macAddress')?.invalid &&
+              (printerForm.get('macAddress')?.dirty ||
+                printerForm.get('macAddress')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="printerForm.get('macAddress')?.errors?.['required']">
+              MAC Address is required.
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <label
+            for="totalCounter"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Total Counter
+           
+          </label>
+          <input
+            id="totalCounter"
+            name="totalCounter"
+            type="text"
+            formControlName="totalCounter"
+            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+          />
+          <div
+            *ngIf="
+              printerForm.get('totalCounter')?.invalid &&
+              (printerForm.get('totalCounter')?.dirty ||
+                printerForm.get('totalCounter')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="printerForm.get('totalCounter')?.errors?.['required']">
+              Total Counter is required.
+            </p>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <label
+            for="branch_code"
+            class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
+            >Branch Code
+            
+          </label>
+          <input
+            id="branch_code"
+            name="branch_code"
+            type="text"
+            formControlName="branch_code"
+            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+          />
+          <div
+            *ngIf="
+              printerForm.get('branch_code')?.invalid &&
+              (printerForm.get('branch_code')?.dirty ||
+                printerForm.get('branch_code')?.touched)
+            "
+            class="mt-1 text-xs text-red-600"
+          >
+            <p *ngIf="printerForm.get('branch_code')?.errors?.['required']">
+              Branch Code is required.
+            </p>
+          </div>
+        </div>
+
+          <!-- Error Message Display from the component's logic -->
+      <div *ngIf="errorMessage" class="text-sm font-medium text-center text-red-600">
+        {{ errorMessage }}
+      </div>
+
+        <div class="input-group mb-3">
+          <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+            <button type="submit" [disabled]="printerForm.invalid" class="btn btn-primary">Add Printer</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
