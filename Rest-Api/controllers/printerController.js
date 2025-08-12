@@ -125,7 +125,7 @@ const updatePrinter = async (req, res) => {
       await newBranch.save();
       updatedData.branch = newBranch._id;
     }
-    const printer = await Branch.findByIdAndUpdate(
+    const printer = await Printer.findByIdAndUpdate(
       req.params.id,
       { $set: updatedData },
       { new: true, runValidators: true }
@@ -148,11 +148,16 @@ const updatePrinter = async (req, res) => {
 
 const deletePrinter = async (req, res) => {
   try {
-    const printer = findByIdAndDelete(req.params.id);
+    
+    const printer = await Printer.findByIdAndDelete(req.params.id);
+
     if (!printer) {
       return res.status(404).json({ message: "Printer not found" });
     }
-    const branch = Branch.findById(printer.branch);
+
+    
+    const branch = await Branch.findById(printer.branch);
+
     if (branch) {
       branch.numberOfPrinters =
         branch.numberOfPrinters > 0 ? branch.numberOfPrinters - 1 : 0;

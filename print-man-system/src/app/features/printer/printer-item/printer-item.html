@@ -1,9 +1,9 @@
-<!-- <tbody> -->
+
+
   <tr>
-    <th scope="row">
-      <input type="checkbox" aria-label="Checkbox" />
-    </th>
-    <td class="text-center">{{printer.model}}</td>
+     <td><input type="checkbox" class="tm-checkbox" [checked]="isSelected" (change)="onCheckboxChange($event)" aria-label="Checkbox" /></td>
+
+    <td class="tm-product-name">{{printer.model}}</td>
     <td class="text-center">{{printer.serialNumber}}</td>
     <td class="text-center">{{printer.address}}</td>
     <td class="text-center">{{printer.ipAddress}}</td>
@@ -11,6 +11,13 @@
     <td class="text-center">{{printer.totalCounter}}</td>
     <td class="text-center">{{printer.branch_code}}</td>
 
-    <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+    <td>
+       <a [routerLink]="['/edit-printer', printer._id]">
+      <i class="fas fa-edit tm-edit-icon"></i>
+    </a>
+    <i class="fas fa-trash-alt tm-trash-icon" (click)="onDeleteClick()"></i>
+  </td>
+    
   </tr>
-<!-- </tbody> -->
+
+

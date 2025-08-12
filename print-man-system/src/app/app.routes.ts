@@ -34,5 +34,10 @@ export const routes: Routes = [
         path: 'add-branch',
         loadComponent: () => import('./features/branch/add-branch/add-branch').then(c => c.AddBranch)
     },
+      {
+        path: 'edit-printer/:id',
+        loadComponent: () => import('./features/printer/edit-printer/edit-printer').then(c => c.EditPrinter)
+    },
+    
 
 ];

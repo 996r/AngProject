@@ -5,12 +5,12 @@ import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PrinterItem } from '../printer-item/printer-item';
 import { Observable, catchError, startWith, of } from 'rxjs'; // Import necessary RxJS operators
-import { AsyncPipe } from '@angular/common';
-
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-printer-board',
   standalone: true,
-  imports: [PrinterItem, AsyncPipe],
+  imports: [PrinterItem, AsyncPipe, CommonModule],
   templateUrl: './printer-board.html',
   styleUrl: './printer-board.css'
 })
@@ -18,15 +18,19 @@ export class PrinterBoard implements OnInit {
   
   
   printers$!: Observable<Printer[]>;
+    selectedPrinters: Set<string> = new Set();
 
 
-  constructor(private printerService: PrinterService) {}
+  constructor(private router: Router,private printerService: PrinterService) {}
 
   ngOnInit(): void {
   
     this.getAllPrinters();
   }
 
+   isSelected(id: string): boolean {
+    return this.selectedPrinters.has(id);
+  }
  
   getAllPrinters(): void {
     this.printers$ = this.printerService.getAllPrinters().pipe(
@@ -38,4 +42,34 @@ export class PrinterBoard implements OnInit {
       })
     );
   }
+
+   onSelectedChange(id: string, isChecked: boolean): void {
+    if (isChecked) {
+      this.selectedPrinters.add(id);
+    } else {
+      this.selectedPrinters.delete(id);
+    }
+  }
+
+  onEditPrinter(printerId: string): void {
+    console.log('Navigating to edit printer with ID:', printerId);
+    this.router.navigate(['/edit-printer', printerId]);
+  }
+
+   onDeletePrinter(printerId: string): void {
+    if (printerId) {
+      console.log('Attempting to delete printer with ID:', printerId);
+      this.printerService.deletePrinter(printerId).subscribe({
+        next: () => {
+          console.log('✅ Printer deleted successfully.');
+         
+          this.getAllPrinters(); 
+        },
+        error: (error) => console.error('❌ Error deleting printer:', error)
+      });
+    } else {
+      console.error('❌ Printer ID is missing for deletion.');
+    }
+  }
+  
 }

@@ -44,6 +44,31 @@ export class PrinterService {
       return throwError(() => new Error(error.message));
     }
   }
-}
+
+  getPrinterById(id: string): Observable<Printer> {
+    try {
+      const headers = this.getAuthHeaders();
+      return this.http.get<Printer>(`${this.apiUrl}/${id}`, { headers: headers });
+    } catch (error: any) {
+      return throwError(() => new Error(error.message));
+    }
+  }
+
+   
+  updatePrinter(id: string, printer: Partial<Printer>): Observable<Printer> {
+   
+    const headers = this.getAuthHeaders();
+    const updateUrl = `${this.apiUrl}/${id}`; 
+    return this.http.put<Printer>(updateUrl, printer, { headers });
+  }
+
+   deletePrinter(id: string): Observable<any> {
+    const headers = this.getAuthHeaders();
+    const deleteUrl = `${this.apiUrl}/${id}`;
+    return this.http.delete(deleteUrl, { headers });
+  }
+  }
+
+
 
   
