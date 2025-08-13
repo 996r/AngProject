@@ -1,7 +1,7 @@
 <div class="bg-white tm-block">
   <div class="row">
     <div class="col-12">
-      <h2 class="tm-block-title d-inline-block">Add Product</h2>
+      <h2 class="tm-block-title d-inline-block">Add Printer</h2>
     </div>
   </div>
   <div class="row mt-4 tm-edit-product-row">
@@ -71,7 +71,6 @@
             for="address"
             class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
             >Address
-            
           </label>
           <input
             id="address"
@@ -99,7 +98,6 @@
             for="ipAddress"
             class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
             >IP Address
-            
           </label>
           <input
             id="ipAddress"
@@ -127,7 +125,6 @@
             for="macAddress"
             class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
             >MAC Address
-            
           </label>
           <input
             id="macAddress"
@@ -155,7 +152,6 @@
             for="totalCounter"
             class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
             >Total Counter
-           
           </label>
           <input
             id="totalCounter"
@@ -178,42 +174,52 @@
           </div>
         </div>
 
-        <div class="input-group mb-3">
+     <div class="input-group mb-3">
           <label
             for="branch_code"
             class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label"
             >Branch Code
-            
           </label>
-          <input
+          <select
             id="branch_code"
-            name="branch_code"
-            type="text"
             formControlName="branch_code"
-            class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
-          />
+            class="form-control validate tm-select-height col-xl-8 col-lg-8 col-md-8 col-sm-7"
+          >
+            <option value="" disabled selected>Select a Branch</option>
+            <option
+              *ngFor="let branch of branches"
+              [ngValue]="branch.branch_code"
+            >
+              {{ branch.branch_code }} - {{ branch.branch_name }}
+            </option>
+          </select>
           <div
             *ngIf="
               printerForm.get('branch_code')?.invalid &&
-              (printerForm.get('branch_code')?.dirty ||
-                printerForm.get('branch_code')?.touched)
+              printerForm.get('branch_code')?.touched
             "
-            class="mt-1 text-xs text-red-600"
+            class="alert alert-danger mt-2"
           >
-            <p *ngIf="printerForm.get('branch_code')?.errors?.['required']">
-              Branch Code is required.
-            </p>
+            Branch Code is required.
           </div>
         </div>
 
-          <!-- Error Message Display from the component's logic -->
-      <div *ngIf="errorMessage" class="text-sm font-medium text-center text-red-600">
-        {{ errorMessage }}
-      </div>
+        <div
+          *ngIf="errorMessage"
+          class="text-sm font-medium text-center text-red-600"
+        >
+          {{ errorMessage }}
+        </div>
 
         <div class="input-group mb-3">
           <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-            <button type="submit" [disabled]="printerForm.invalid" class="btn btn-primary">Add Printer</button>
+            <button
+              type="submit"
+              [disabled]="printerForm.invalid"
+              class="btn btn-primary"
+            >
+              Add Printer
+            </button>
           </div>
         </div>
       </form>

@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PrinterService } from '../../../core/services';
-import { Printer } from '../../../models';
+import { PrinterService,BranchService} from '../../../core/services';
+import { Printer, Branch } from '../../../models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-printer',
@@ -15,10 +16,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddPrinter {
   printerForm: FormGroup;
   errorMessage: string | null = null;
+  branches: Branch[] = [];
+   isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private printerService: PrinterService,
+    private branchService: BranchService, 
     private router: Router
   ) {
     this.printerForm = this.fb.group({
@@ -31,6 +35,24 @@ export class AddPrinter {
       branch_code: ['', Validators.required],
     });
   }
+
+  ngOnInit(): void {
+     this.isLoading = true;
+    this.branchService.getAllBranches().subscribe({
+      next: (branches) => {
+         console.log('✅ Branches successfully fetched:', branches);
+        this.branches = branches;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Error fetching branches:', error);
+        this.errorMessage = 'Failed to load branches. Please try again.';
+        this.isLoading = false;
+      },
+    });
+  }
+  
+  
 
   onSubmit(): void {
     if (this.printerForm.valid) {
