@@ -22,18 +22,13 @@ constructor(
 
 
 onLogin(formValue: any){
-    console.log('Form submited', formValue);
+  
 
      this.authService.login(formValue).subscribe({
       next: (response) => {
-      
-        console.log('Login successful!', response);
-     
-      },
+
+         },
       error: (err) => {
-      
-        console.error('Login failed:', err);
-       
         alert('Login failed. Please check your username and password.');
       }
     });

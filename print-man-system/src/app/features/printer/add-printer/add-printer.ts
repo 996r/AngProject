@@ -42,11 +42,10 @@ export class AddPrinter {
 
       this.printerService.createPrinter(newPrinter).subscribe({
         next: (response) => {
-          console.log('Printer created successfully', response);
           this.router.navigate(['/printer-board']);
         },
         error: (error) => {
-          console.error('Error creating printer', error);
+         
           this.errorMessage = 'Failed to create printer. Please try again.';
         },
       });

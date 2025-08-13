@@ -36,9 +36,7 @@ export class PrinterBoard implements OnInit {
     this.printers$ = this.printerService.getAllPrinters().pipe(
    startWith([]),
       catchError((err) => {
-        console.error('Error fetching printers:', err);
-      
-        return of([]);
+       return of([]);
       })
     );
   }
@@ -52,23 +50,21 @@ export class PrinterBoard implements OnInit {
   }
 
   onEditPrinter(printerId: string): void {
-    console.log('Navigating to edit printer with ID:', printerId);
+   
     this.router.navigate(['/edit-printer', printerId]);
   }
 
    onDeletePrinter(printerId: string): void {
     if (printerId) {
-      console.log('Attempting to delete printer with ID:', printerId);
+      
       this.printerService.deletePrinter(printerId).subscribe({
         next: () => {
-          console.log('✅ Printer deleted successfully.');
          
           this.getAllPrinters(); 
         },
-        error: (error) => console.error('❌ Error deleting printer:', error)
-      });
+        error: (error) => console.error('Error deleting printer:', error) });
     } else {
-      console.error('❌ Printer ID is missing for deletion.');
+      
     }
   }
   

@@ -1,7 +1,9 @@
 
 
   <tr>
-     <td><input type="checkbox" class="tm-checkbox" [checked]="isSelected" (change)="onCheckboxChange($event)" aria-label="Checkbox" /></td>
+     <!-- <td><input type="checkbox" class="tm-checkbox" [checked]="isSelected" (change)="onCheckboxChange($event)" aria-label="Checkbox" /></td> -->
+<th><input type="checkbox" class="tm-checkbox" [checked]="isSelected" (change)="onCheckboxChange($event)" aria-label="Checkbox" /></th>
+
 
     <td class="tm-product-name">{{printer.model}}</td>
     <td class="text-center">{{printer.serialNumber}}</td>

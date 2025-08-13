@@ -1,4 +1,4 @@
-// router/printerRoutes.js
+
 
 const express = require('express');
 const {
@@ -11,7 +11,7 @@ const {
 const authMiddleware = require('../utils/authMiddleware');
 const router = express.Router();
 
-// All printer routes are protected by the authMiddleware
+
 router.get('/', authMiddleware, getPrinters);
 router.get('/:id', authMiddleware, getPrinterById);
 router.post('/', authMiddleware, createPrinter);

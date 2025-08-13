@@ -30,7 +30,7 @@ const branchSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  // This array will hold the serial numbers of all printers at this branch
+  
   printer_serial_numbers: [
     {
       type: String,

@@ -3,8 +3,6 @@ import { Printer } from '../../../models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrinterService } from '../../../core/services';
-import { switchMap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; 
 import { HttpClient } from '@angular/common/http';
@@ -40,7 +38,7 @@ export class EditPrinter implements OnInit {
   }
 
   ngOnInit(): void {
-    // Get the printer ID from the URL
+  
     this.route.paramMap.subscribe(params => {
       this.printerId = params.get('id');
       if (this.printerId) {
@@ -49,39 +47,33 @@ export class EditPrinter implements OnInit {
     });
   }
 
-  // Load the printer's existing data into the form
+  
   loadPrinterData(id: string): void {
     this.printerService.getPrinterById(id).subscribe({
       next: (printer) => {
-        // Use the patchValue method to set the form controls
+       
         this.printerForm.patchValue(printer);
       },
       error: (err) => {
-        console.error('Failed to load printer data', err);
-        // Navigate back or show an error message
-        this.router.navigate(['/printers']);
+       
+        this.router.navigate(['/printer-board']);
       }
     });
   }
 
   onSubmit(): void {
     if (this.printerForm.valid && this.printerId) {
-      console.log('Attempting to update printer with ID:', this.printerId);
-      
-      // Use the service to make the PUT request
+     
       this.printerService.updatePrinter(this.printerId, this.printerForm.value).subscribe({
         next: (updatedPrinter) => {
-          console.log('Printer updated successfully', updatedPrinter);
-          // Navigate back to the printer list
-          this.router.navigate(['/printers']);
+            this.router.navigate(['/printer-board']);
         },
         error: (err) => {
-          console.error('Failed to update printer:', err);
-          // Handle the error (e.g., show a user-friendly message)
+         
         }
       });
     } else {
-      console.error('Form is invalid or printer ID is missing.');
+    
     }
   }
 }

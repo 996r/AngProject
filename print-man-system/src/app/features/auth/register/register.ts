@@ -29,8 +29,6 @@ export class Register {
       alert('Passwords do not match. Please try again.');
       return; 
     }
-    console.log('Registering user with data:', formValue);
-
     
     this.authService.register({
       username: formValue.username,
@@ -39,12 +37,12 @@ export class Register {
       password: formValue.password
     }).subscribe({
       next: (response) => {
-        console.log('Registration successful!', response);
+      
         alert('Registration successful! You can now log in.');
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        console.error('Registration failed:', err);
+      
         alert('Registration failed. ' + (err.error?.message || 'Server error.'));
       }
     });

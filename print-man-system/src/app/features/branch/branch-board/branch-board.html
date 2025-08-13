@@ -18,7 +18,9 @@
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-striped tm-table-striped-even mt-3">
-                                <thead>
+                               
+                                <tbody>
+                                    <thead>
                                     <tr class="tm-bg-gray">
                                         <th scope="col">&nbsp;</th>
                                         <th scope="col">Branch Name</th>
@@ -31,7 +33,6 @@
                                         <th scope="col">&nbsp;</th>
                                     </tr>
                                 </thead>
-                                <tbody>
                                       @for (branch of branches$| async; track branch._id) {
                                     <app-branch-item [branch]="branch"></app-branch-item>
                                       }

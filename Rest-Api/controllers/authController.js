@@ -1,4 +1,4 @@
-// controllers/authController.js
+
 
 const { comparePassword } = require('../utils/auth');
 const { generateToken } = require('../utils/jwt');

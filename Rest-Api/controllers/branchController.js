@@ -1,10 +1,10 @@
-// controllers/branchController.js
+
 
 const Branch = require('../models/Branch');
 
 const getBranches = async (req, res) => {
   try {
-    // const branches = await Branch.find().populate('printer_serial_numbers');
+    
     const branches = await Branch.find();
     res.json(branches);
   } catch (err) {
@@ -32,7 +32,7 @@ const getBranchById = async (req, res) => {
 const createBranch = async (req, res) => {
   const { branch_name, city, address, branch_code, numberOfPeoples } = req.body;
   try {
-    // Check for existing branch with the same branch code
+  
     let branch = await Branch.findOne({ branch_code });
     if (branch) {
       return res.status(400).json({ message: 'Branch with this code already exists' });
@@ -44,7 +44,7 @@ const createBranch = async (req, res) => {
       address,
       branch_code,
       numberOfPrinters: 0,
-      numberOfPeoples: numberOfPeoples || 0, // Set new field
+      numberOfPeoples: numberOfPeoples || 0, 
       printer_serial_numbers: []
     });
 
@@ -86,7 +86,7 @@ const updateBranch = async (req, res) => {
 
 const deleteBranch = async (req, res) => {
   try {
-    // Check if the branch has any printers associated
+   
     const branch = await Branch.findById(req.params.id);
     if (branch && branch.numberOfPrinters > 0) {
       return res.status(400).json({ message: 'Cannot delete a branch with printers. Please reassign or delete printers first.' });

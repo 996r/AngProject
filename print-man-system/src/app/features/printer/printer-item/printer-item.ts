@@ -13,7 +13,6 @@ export class PrinterItem {
  @Input() isSelected: boolean = false;
  @Output() selectedChange = new EventEmitter<boolean>();
  @Output() editClicked = new EventEmitter<string>();
-
  @Output() deleteClicked = new EventEmitter<string>(); 
 
  constructor(private router: Router) { }
@@ -27,10 +26,9 @@ onCheckboxChange(event: any): void {
 
 onEditClick(): void {
     if (this.printer && this.printer._id) {
-       
-        this.editClicked.emit(this.printer._id.toString());
+          this.editClicked.emit(this.printer._id.toString());
     } else {
-      console.error('❌ Cannot emit ID: Printer object or ID is missing.');
+     
     }
 }
 
@@ -38,7 +36,7 @@ onDeleteClick(): void {
     if (this.printer && this.printer._id) {
         this.deleteClicked.emit(this.printer._id.toString());
     } else {
-      console.error('❌ Cannot emit ID: Printer object or ID is missing.');
+      
     }
   }
 }

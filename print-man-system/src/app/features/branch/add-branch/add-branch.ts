@@ -41,12 +41,11 @@ export class AddBranch {
 
       this.branchService.createBranch(newBranch).subscribe({
         next: (response) => {
-          console.log('Branch created successfully', response);
-
+        
           this.router.navigate(['/branch-board']);
         },
         error: (error) => {
-          console.error('Error creating branch', error);
+       
           this.errorMessage = 'Failed to create brach. Please try again.';
         },
       });
